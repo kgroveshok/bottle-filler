@@ -556,10 +556,9 @@ while not stopBottle:
                 time.sleep(fillPulse)
                 pz.stop()
                 fillStage = fillStage - 1
+                # wait for liquid drips to clear
+                time.sleep(2)
 
-#          caddyPos = caddyPos + 10
-        #TODO 
-        pass
     elif currentStage == stage.Init:
         if stageSetup:
 #                dispLED2 = True
