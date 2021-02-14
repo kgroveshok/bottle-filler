@@ -11,7 +11,7 @@ Feel free to reuse but please do credit
 * Parts Needed
 
     * Any Raspberry Pi, I'm using a Zero. At some point might convert to ESP.
-    * Piconzero control board (just so its all compact).
+    * Piconzero control board (just so its all compact). https://4tronix.co.uk/blog/?p=1224
     * HCSR04 ultasonic detector (for bottle presence detection) 
     * 3 x Microswitches (Caddy ends and bottle marker)
     * 1 x Continuous rotation servo to drive the caddy
@@ -35,22 +35,23 @@ Feel free to reuse but please do credit
   * The HEF is then wired up to sink each of the LEDs as:
 
           Pin             Where to
-          1
-          2
-          3
-          4
-          5
-          6
-          7
-          8
-          9
-          10
-          11
-          12
-          13
-          14
-          15
-          16
+          1              LED 5
+          2              LED 7
+          3              +5V from Pi
+          4              LED 8
+          5              LED 6
+          6              GND on Pi
+          7              +5V from Pi
+          8              GND on Pi
+          9              GPIO 18 
+          10             GPIO 27
+          11             GPIO 22
+          12             LED 4
+          13             LED 1
+          14             LED 2
+          15             LED 3
+          16             +5V from Pi
+
 
         All LEDs have a common ground which is connected to the Pi ground.
         5v is supplied from the Pi
