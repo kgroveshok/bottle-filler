@@ -99,6 +99,7 @@ TODO youtube videos and some pictures
         * Pressing and releasing the program select button will fire the pump for one unit
         * Repeat until the desired number of presses are made
         * Pressing 'Adjustment' button will save that setting
+        * Pressing 'Start' will cancel the adjustment
         * All settings are saved to 'bottle.settings' file. You can either edit it later, or 
           deletion will revert to the predefined settings in the code.
 
