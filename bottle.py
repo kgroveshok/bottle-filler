@@ -254,6 +254,9 @@ stopBottle = False
 
 while not stopBottle:
     if currentStage != prevStage :
+        pressedSelection = False
+        pressedStartStop = False
+        pressedAdjust = False
         prevStage = currentStage
         stageSetup = True
         print( "Stage setup for %d" % ( currentStage ) )
@@ -313,24 +316,28 @@ while not stopBottle:
             pressedAdjust = False
             pressSelection = False
 
-        if senseButAdjustPreset :
+        if senseButAdjustPreset and not pressedAdjust :
             # selection button pressed
             pressedAdjust = True
- #           print "Holding down adjust button in learn"
+            print "Holding down adjust button in learn"
 
-        if senseButSelection :
+        if senseButSelection and not pressedSelection:
             # selection button pressed
             pressedSelection = True
-#            print "Holding down selection button in learn"
+            print "Holding down selection button in learn"
 
-        if senseButStartStop :
+        if senseButStartStop and not pressedStartStop:
+            # selection button pressed
+            pressedStartStop = True
+            print "Holding down start button in learn"
+
+        if not senseButStartStop and pressedStartStop :
             # cancel adjustment
             print( "Cancel setting program %d" % ( fillSelection ))
             currentStage = stage.Selection
-            pressedAdjust=False
             time.sleep(3)
 
-        if not senseButAdjustPreset and pressedAdjust :
+        elif not senseButAdjustPreset and pressedAdjust :
             print( "Exit adjustment for %d set at %d from %d" % ( fillSelection,  fillStage,fillPrograms[fillSelection]))
             # set and save the adjustments
             fillPrograms[fillSelection]=fillStage
