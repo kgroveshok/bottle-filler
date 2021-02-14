@@ -113,7 +113,7 @@ TODO youtube videos and some pictures
         * Press and hold the 'Start' button and the pump will run until you release both
 
    * Calibrate Pipe Insert - To make sure the pipe inserts into the bottle at the right point, you 
-     can hold down the 'Adjustment' button and tap the 'Start' button to toggle the position of the
+     can hold down the 'Selection' button and tap the 'Adjustment' button to toggle the position of the
      filling servo either in or out.
      
 

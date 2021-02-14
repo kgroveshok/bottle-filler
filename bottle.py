@@ -398,7 +398,7 @@ while not stopBottle:
             pressedAdjust = True
             #print "Holding down adjust button selection stage"
 
-        if not senseButAdjustPreset and pressedAdjust and not senseButStartStop :
+        if not senseButAdjustPreset and pressedAdjust and not senseButSelection :
             currentStage = stage.Learn
 
         elif not senseButSelection and pressedSelection :
@@ -421,7 +421,7 @@ while not stopBottle:
             time.sleep(fillPulse)
             pz.stop()
 
-        elif not senseButAdjustPreset and pressedAdjust and senseButStartStop :
+        elif not senseButAdjustPreset and pressedAdjust and senseButSelection :
             pressedAdjust = False
             pressedStartStop = False
             print "Toggle fill pipe in and out"
