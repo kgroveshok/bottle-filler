@@ -282,31 +282,34 @@ while not stopBottle:
 
 
     if currentStage != stage.Selection and currentStage != stage.Learn:
-       # emergency stop if start button is pressed when running
-
-
-       if senseButStartStop :
-            print(" emergency stop!")
-            currentStage = stage.Selection
-            pressedStartStop = True
-            # stop pump
-            pz.stop()
-            # stop servo
-            pz.setOutput(pinCaddyDrive,caddySpeedStop )
-            # take fill pipe out
-            pz.setOutput( pinFillInsert, fillPipeOut)
-
        # As process is running set the display to
        # be the current stage number
        for s in range(0,8):
             displayLED[s][0]=0
        displayLED[currentStage+1][0]=1
 
+
+    if senseButStartStop and ( currentStage != stage.Selection and currentStage != stage.Learn ):
+       # emergency stop if start button is pressed when running
+#       if senseButStartStop :
+            print(" emergency stop!")
+            currentStage = stage.Selection
+            stageSetup = True
+            # stop pump
+            pz.stop()
+            # stop servo
+            pz.setOutput(pinCaddyDrive,caddySpeedStop )
+            # take fill pipe out
+            pz.setOutput( pinFillInsert, fillPipeOut)
+            cycleLEDS()
+            cycleLEDS()
+
+
 #????    if not senseButStartStop and pressedStartStop :
 #            pressedStartStop = False
 
 
-    if currentStage == stage.Learn:
+    elif currentStage == stage.Learn:
         if stageSetup : 
             print( "Entering learn mode for %d" % ( fillSelection ))
             displayLED[fillSelection][0]=0
@@ -370,7 +373,7 @@ while not stopBottle:
             
         learnBlink = learnBlink - 1
 
-    if currentStage == stage.Selection:
+    elif currentStage == stage.Selection:
         if stageSetup :
             pz.setOutput( pinFillInsert, fillPipeOut)
             fillStage = 0
