@@ -91,7 +91,7 @@ dispLED3 = 0
 dispLED4 = 0
 dispLED5 = 0
 
-# HEF4581 configuration for the LED display
+# HEF4051B configuration for the LED display
 
 displayLED = [ [ 0, False, False, False ], \
     [ 0, False, False, True ],

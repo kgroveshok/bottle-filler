@@ -18,7 +18,7 @@ Feel free to reuse but please do credit
     * 1 x Micro 180 servo to control filling pipe insertion 
     * 1 x Micro pump of choice. Using a 12v but works well under 5v
       it's a chemical grade so I can use with alcohol based perfumes
-    * 1 x HEF4581 octal multiplexer to drive the 8 LEDS from 3 pins
+    * 1 x HEF4051B octal multiplexer to drive the 8 LEDS from 3 pins
     * 4 x Push buttons for the control panel
     * 8 x LEDs 
     * Any breadboard or vero to stick it all on
