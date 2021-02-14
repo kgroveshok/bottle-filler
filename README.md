@@ -78,21 +78,56 @@ the particular bottle sizes along with a marker for where the fill point for tha
 This means that various bottle shapes and sizes can be accomodated and that they are held safely and
 won't tip while in motion.
 
-The fill pipe too provides flexiblity to position depending on size and shape.
+The flexible (TODO) fill pipe too provides flexiblity to position depending on size and shape.
 
 TODO youtube videos and some pictures
 
+[[https://youtu.be/vrkxeWaGT0Y]]
+[[https://youtu.be/BeN0tJPjiZY]]
+[[https://youtu.be/YHZAN4LFCxw]]
+
 * Control Panel Features
 
-TODO
-Program selection button - goes through six programs, though all eight leds are lit. LED 8 selection
-provides a system shutdown.
+   * Program 'Selection' button - goes through six programs, though all eight LEDs are lit in 
+     sequence. LED 8 selection provides a system shutdown feature.
+
+   * Program Adjustment
+        * Select a program to change
+        * Press the 'Adjustment' button
+        * The 7th and selected program LEDs will blink alternatly
+        * Pressing and releasing the program select button will fire the pump for one unit
+        * Repeat until the desired number of presses are made
+        * Pressing 'Adjustment' button will save that setting
+        * All settings are saved to 'bottle.settings' file. You can either edit it later, or 
+          deletion will revert to the predefined settings in the code.
 
 
-Program adjustment
+   * 'Start' and emergency stop button - Starts the fill process. If at any time you need to
+     stop before the end of program hold this button down.
 
-Start and emergency stop button - starts the fill process
+   * Prime Pump - If the tube is empty you need to fill the tubing with liquid so that you don't 
+     get empty bottles on the fill process. 
+        * Hold down the program 'Selection' button
+        * Press and hold the 'Start' button and the pump will run until you release both
+
+   * Calibrate Pipe Insert - To make sure the pipe inserts into the bottle at the right point, you 
+     can hold down the 'Adjustment' button and tap the 'Start' button to toggle the position of the
+     filling servo either in or out.
+     
 
 
+* Fill Process
 
+   * Press 'Selection' button until the desired program is found
+   * Press 'Start' button
+   * LEDs cycle
+   * Caddy will eject all the bottles until the microswitch is tripped.
+   * Caddy will reverse and begin to search for a bottle marker being tripped by a micro switch
+   * Caddy drive servo will stop
+   * Ultrasonic dector will make sure there is a bottle actually at that bottle marker
+   * If a bottle is sensed then the pipe fill servo will insert the fill tube
+   * Pump will start up for the required number of units
+   * Pipe fill servo will remove tube
+   * Caddy will then continue to look for another bottle marker unless the end caddy micro switch is
+     tripped.
 
