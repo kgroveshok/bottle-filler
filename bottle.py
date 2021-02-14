@@ -250,12 +250,13 @@ pz.setOutputConfig( pinFillInsert, fillPipeOut )
 # load presaved programs if present
 loadPrograms()
 
+stopBottle = False
 
-
-while True:
+while not stopBottle:
     if currentStage != prevStage :
         prevStage = currentStage
         stageSetup = True
+        print( "Stage setup for %d" % ( currentStage ) )
     else:
         stageSetup = False
 
@@ -315,12 +316,19 @@ while True:
         if senseButAdjustPreset :
             # selection button pressed
             pressedAdjust = True
-            print "Holding down adjust button"
+ #           print "Holding down adjust button in learn"
 
         if senseButSelection :
             # selection button pressed
             pressedSelection = True
-            print "Holding down selection button"
+#            print "Holding down selection button in learn"
+
+        if senseButStartStop :
+            # cancel adjustment
+            print( "Cancel setting program %d" % ( fillSelection ))
+            currentStage = stage.Selection
+            pressedAdjust=False
+            time.sleep(3)
 
         if not senseButAdjustPreset and pressedAdjust :
             print( "Exit adjustment for %d set at %d from %d" % ( fillSelection,  fillStage,fillPrograms[fillSelection]))
@@ -331,7 +339,7 @@ while True:
             pressedAdjust=False
             time.sleep(3)
 
-        if not senseButSelection and pressedSelection :
+        elif not senseButSelection and pressedSelection :
             fillStage = fillStage + 1
             print( "Do pump %d" % fillStage )
             pressedSelection = False
@@ -349,7 +357,7 @@ while True:
             else:
                 displayLED[6][0] = 0
                 displayLED[fillSelection][0] = 1
-            learnBlink = 5
+            learnBlink = 50
             
         setLED()
             
@@ -361,6 +369,7 @@ while True:
             fillStage = 0
             pipeStateIn = False
             pressedAdjust = False
+            pressedSelection = False
 
         for p in range(0,8):
             if fillSelection == p:
@@ -372,17 +381,17 @@ while True:
         if senseButSelection :
             # selection button pressed
             pressedSelection = True
-            print "Holding down selection button"
+            #print "Holding down selection button selection stage"
 
         if senseButAdjustPreset :
             # selection button pressed
             pressedAdjust = True
-            print "Holding down adjust button"
+            #print "Holding down adjust button selection stage"
 
         if not senseButAdjustPreset and pressedAdjust and not senseButStartStop :
             currentStage = stage.Learn
 
-        if not senseButSelection and pressedSelection :
+        elif not senseButSelection and pressedSelection :
             # selection button has been released
 
             pressedSelection = False
@@ -394,15 +403,17 @@ while True:
                 fillSelection = 0
             print( "Fill selection %d" % fillSelection )
 
-        if senseButSelection and senseButStartStop :
+        elif senseButSelection and senseButStartStop :
+            pressedSelection = False
             fillStage = fillStage + 1
             print( "Run pump pulse %d counted %d " % ( fillPulse, fillStage ) )
             pz.forward( fillSpeed)
             time.sleep(fillPulse)
             pz.stop()
 
-        if senseButAdjustPreset and pressedAdjust and senseButStartStop :
+        elif not senseButAdjustPreset and pressedAdjust and senseButStartStop :
             pressedAdjust = False
+            pressedStartStop = False
             print "Toggle fill pipe in and out"
 #                pressedAdjust = False
 #                senseButStartStop = False
@@ -421,7 +432,7 @@ while True:
         #    dispLED4 = True
         #    dispLED5 = True
 
-        if senseButStartStop and not senseButSelection and not pressedStartStop and not senseButAdjustPreset:
+        elif senseButStartStop and not senseButSelection and not pressedStartStop and not senseButAdjustPreset:
 
             cycleLEDS()
             # start the system
@@ -438,7 +449,7 @@ while True:
             if fillSelection == 7:
                 # power off
                 currentStage = stage.Selection
-                os.system("sudo halt -p")
+                stopBottle = True
 
 
     elif currentStage == stage.LoadCaddy:
@@ -493,10 +504,6 @@ while True:
                 pz.setOutput( pinCaddyDrive, caddySpeedStop )
                 pz.setOutput( pinFillInsert, fillPipeOut)
                 cycleLEDS()
-                # TODO stop caddy
-            else:
-                #TODO move caddy
-                pass
         setLED()
     elif currentStage == stage.BottlePresentScan:
         dispLED4 = True
@@ -568,3 +575,4 @@ while True:
 hcsr04.cleanup()
 
 pz.cleanup()
+#os.system("sudo halt -p")
