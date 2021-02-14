@@ -388,15 +388,15 @@ while not stopBottle:
                 displayLED[p][0]=0
 
         # select mode
-        if senseButSelection :
+        if senseButSelection and not pressedSelection:
             # selection button pressed
             pressedSelection = True
-            #print "Holding down selection button selection stage"
+            print "Holding down selection button selection stage"
 
-        if senseButAdjustPreset :
+        if senseButAdjustPreset and not pressedAdjust:
             # selection button pressed
             pressedAdjust = True
-            #print "Holding down adjust button selection stage"
+            print "Holding down adjust button selection stage"
 
         if not senseButAdjustPreset and pressedAdjust and not senseButSelection :
             currentStage = stage.Learn
@@ -585,4 +585,4 @@ while not stopBottle:
 hcsr04.cleanup()
 
 pz.cleanup()
-#os.system("sudo halt -p")
+os.system("sudo halt -p")
