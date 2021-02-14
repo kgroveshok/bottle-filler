@@ -302,8 +302,8 @@ while not stopBottle:
             displayLED[s][0]=0
        displayLED[currentStage+1][0]=1
 
-    if not senseButStartStop and pressedStartStop :
-            pressedStartStop = False
+#????    if not senseButStartStop and pressedStartStop :
+#            pressedStartStop = False
 
 
     if currentStage == stage.Learn:
