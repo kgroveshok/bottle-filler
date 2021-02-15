@@ -89,13 +89,14 @@ TODO youtube videos and some pictures
 
 * Control Panel Features
 
-   * Program 'Selection' button - goes through six programs, though all eight LEDs are lit in 
-     sequence. LED 8 selection provides a system shutdown feature.
+   * Program 'Selection' button - goes through six normal programs, the flush program (7th) that
+     won't move the caddy and can be used to clean the tubing, and the 8th LED which is a system 
+     shutdown feature.
 
    * Program Adjustment
         * Select a program to change
         * Press the 'Adjustment' button
-        * The 7th and selected program LEDs will blink alternatly
+        * The 7th and selected program LEDs will blink alternately
         * Pressing and releasing the program select button will fire the pump for one unit
         * Repeat until the desired number of presses are made
         * Pressing 'Adjustment' button will save that setting
@@ -116,7 +117,9 @@ TODO youtube videos and some pictures
      can hold down the 'Selection' button and tap the 'Adjustment' button to toggle the position of the
      filling servo either in or out.
      
-
+   * Flush Program - Starting the 7th program will run the pump in whatever position it is in for a
+     long (can be adjusted) cycle and this can be used to flush through any water and/or cleaning
+     fluid.
 
 * Fill Process
 

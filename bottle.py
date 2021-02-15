@@ -160,13 +160,14 @@ fillPulse = 0.05
 
 # Preset fill programs (can be over ridden at control panel)
 
-fillPrograms = [ 1,5, 10, 15, 20, 40, 1, 1 ]
+fillPrograms = [ 1, 5, 10, 15, 20, 40, 300, 1 ]
 fillStage = 0
 
 
 # Save and loading of the presets and user adjustments
 
 def savePrograms():
+    print "Saving program settings to bottle.settings."
     f = open( "bottle.settings","w" )
     for p in range(0,6):
         f.write("%d " % ( fillPrograms[p] ))
@@ -182,7 +183,8 @@ def loadPrograms():
         for p in range(0,6):
             fillPrograms[p]=int(fill[p])
     except:
-        print "No bottle.settings file found. Using code defaults"
+        print "No bottle.settings file found. Using code defaults and saving them."
+        savePrograms()
 
     print "Current Programs"
     for p in range(0,6):
@@ -443,24 +445,26 @@ while not stopBottle:
         #    dispLED5 = True
 
         elif senseButStartStop and not senseButSelection and not pressedStartStop and not senseButAdjustPreset:
-
-            cycleLEDS()
             # start the system
-            print( "Start fill process")
 #                displayLED[0][0]=1
 #                dispLED1 = True
 #                dispLED2 = False
 #                dispLED3 = False
 #                dispLED4 = False
 #                dispLED5 = False
-            currentStage = stage.LoadCaddy
-            time.sleep(2)
+            if fillSelection == 6 :
+                print "Flush system program starting"
+                currentStage = stage.Filling
+            else:
+                cycleLEDS()
+                print( "Start fill process")
+                currentStage = stage.LoadCaddy
+                time.sleep(2)
 
             if fillSelection == 7:
-                # power off
+                print "Power off"
                 currentStage = stage.Selection
                 stopBottle = True
-
 
     elif currentStage == stage.LoadCaddy:
         if stageSetup:
@@ -549,9 +553,13 @@ while not stopBottle:
         else:
             if fillStage == 0 :
                 print( "Filling completed")
-                currentStage = stage.FindingBottleMark
-                pz.setOutput( pinFillInsert, fillPipeOut)
-                time.sleep(0.5)
+                if fillSelection == 6:
+                    print "Flush system program is over so return to selection"
+                    currentStage = stage.Selection
+                else:
+                    currentStage = stage.FindingBottleMark
+                    pz.setOutput( pinFillInsert, fillPipeOut)
+                    time.sleep(0.5)
             else:
                 print( "Filling pulse %d" % ( fillStage ))
                 pz.forward(fillSpeed)
