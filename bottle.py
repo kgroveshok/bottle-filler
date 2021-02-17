@@ -501,11 +501,13 @@ while not stopBottle:
             if fillSelection == 6 :
                 print "Flush system program starting"
                 currentStage = stage.Filling
+                senseButStartStop = False
             else:
-                cycleLEDS()
                 print( "Start fill process")
                 currentStage = stage.LoadCaddy
-                time.sleep(2)
+
+            cycleLEDS()
+            time.sleep(2)
 
             if fillSelection == 7:
                 print "Power off"

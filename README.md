@@ -96,7 +96,7 @@ TODO youtube videos and some pictures
    * Program Adjustment
         * Select a program to change
         * Press the 'Adjustment' button
-        * The 7th and selected program LEDs will blink alternately
+        * The 8th and selected program LEDs will blink alternately
         * Pressing and releasing the program select button will fire the pump for one unit
         * Repeat until the desired number of presses are made
         * Pressing 'Adjustment' button will save that setting
