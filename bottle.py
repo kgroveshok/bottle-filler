@@ -63,10 +63,11 @@ hcsr04.init()
 
 pinCaddyIn = 0
 pinCaddyOut = 0
-pinBottleMark = 2
-pinButSelection = 2
+pinBottleMark = 1
+pinButSelection = 1
 pinButStartStop = 3
-pinButAdjustPreset = 1
+pinButAdjustPreset = 2
+
 pinFillInsert = 1
 
 pinCaddyDrive = 0
@@ -79,7 +80,7 @@ pinPump = 1
 
 # max distance a bottle can be away to detect it is present
 # * CHANGE HERE *
-threshBottlePresent = 5
+threshBottlePresent = 3
 
 
 
@@ -138,7 +139,7 @@ def setLED():
 # Piconzero servo caddy loading speeds
 # * CHANGE HERE *
 
-caddySpeedStop=88
+caddySpeedStop=87
 #caddySpeedStop=90
 #too fast caddySpeedIn=98
 caddySpeedIn=93
@@ -249,6 +250,8 @@ pz.setOutputConfig( pinFillInsert, fillPipeOut )
 
 # main loop
 
+cycleLEDS()
+
 # load presaved programs if present
 loadPrograms()
 
@@ -281,6 +284,28 @@ while not stopBottle:
 #    print(" select %d" % ( senseButSelection ))
 #return 
 #        print( ": sel %d selbut %d ex %d start %d sel %d stage %d pres %d mrk %d in/out %d "        % ( fillSelection, senseButSelection, senseButAdjustPreset,  senseButStartStop,  pressedSelection,  currentStage,        senseBottlePresent, senseBottleMark, senseCaddyIn +  senseCaddyOut) )
+
+    if senseButSelection :
+        print "DIAG: Selection button pressed"
+
+    if senseButStartStop :
+        print "DIAG: Start/Stop button pressed"
+
+    #if senseCaddyIn or senseCaddyOut :
+    #    print "DIAG: Caddy in/out tripped"
+
+    if senseBottleMark :
+        print "DIAG: Bottle mark tripped"
+
+    if senseButAdjustPreset :
+        print "DIAG: Adjust preset button pressed"
+
+
+    if senseBottlePresent :
+        print( "DIAG: Bottle present sensor %d" % senseBottlePresent)
+
+        if senseBottlePresent < threshBottlePresent :
+            print( "DIAG: Bottle present sensor tripped %d" % senseBottlePresent)
 
 
     if currentStage != stage.Selection and currentStage != stage.Learn:
@@ -365,9 +390,9 @@ while not stopBottle:
 #                print ( "Blink led %d " %( displayLED[fillSelection][0]))
             if displayLED[fillSelection][0]:
                 displayLED[fillSelection][0] = 0
-                displayLED[6][0] = 1
+                displayLED[7][0] = 1
             else:
-                displayLED[6][0] = 0
+                displayLED[7][0] = 0
                 displayLED[fillSelection][0] = 1
             learnBlink = 50
             
