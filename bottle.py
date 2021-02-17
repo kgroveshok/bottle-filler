@@ -80,7 +80,7 @@ pinPump = 1
 
 # max distance a bottle can be away to detect it is present
 # * CHANGE HERE *
-threshBottlePresent = 3
+threshBottlePresent = 4
 
 
 
@@ -164,6 +164,18 @@ fillPulse = 0.05
 fillPrograms = [ 1, 5, 10, 15, 20, 40, 300, 1 ]
 fillStage = 0
 
+def hcsr04Max():
+    # Take find the max from an avg of the samples to discount spurious readings
+    m=0
+    for r in range(0,5):
+        sample =  int( hcsr04.getDistance() )
+        print( "Sample %d" % sample )
+        if sample > m :
+            m = sample
+
+        time.sleep(0.025)
+
+    return m
 
 # Save and loading of the presets and user adjustments
 
@@ -279,7 +291,13 @@ while not stopBottle:
     senseCaddyOut = not pz.readInput( pinCaddyOut)
     senseBottleMark = not pz.readInput( pinBottleMark)
     senseButAdjustPreset = not pz.readInput( pinButAdjustPreset)
-    senseBottlePresent = int( hcsr04.getDistance() )  
+
+    if currentStage == stage.Selection or currentStage == stage.BottlePresentScan :
+        # Due to the time it takes to collect the samples
+        # Only do this when nothing is moving
+        senseBottlePresent = hcsr04Max()
+    else:
+        senseBottlePresent = 100
 
 #    print(" select %d" % ( senseButSelection ))
 #return 
