@@ -80,7 +80,7 @@ pinPump = 1
 
 # max distance a bottle can be away to detect it is present
 # * CHANGE HERE *
-threshBottlePresent = 4
+threshBottlePresent = 2
 
 
 
@@ -161,20 +161,29 @@ fillPulse = 0.05
 
 # Preset fill programs (can be over ridden at control panel)
 
-fillPrograms = [ 1, 5, 10, 15, 20, 40, 300, 1 ]
+fillPrograms = [ 1, 5, 10, 15, 20, 40, 300, 1, 0, 0 ]
 fillStage = 0
 
 def hcsr04Max():
     # Take find the max from an avg of the samples to discount spurious readings
+    # v2 Or see if the presence threshold is counted significantly
     m=0
-    for r in range(0,5):
+    t=0
+    for r in range(0,10):
         sample =  int( hcsr04.getDistance() )
-        print( "Sample %d" % sample )
+        if sample <= threshBottlePresent :
+            t = t + 1
         if sample > m :
             m = sample
+        print( "Sample %d: %d t %d max %d" %  (r, sample, t,m) )
 
-        time.sleep(0.025)
+        time.sleep(0.05)
 
+    print( "Final Sample %d t %d max %d" %  (sample, t,m) )
+    if t >= 8 :
+        print( "Mostly present" )
+        # 80% present
+        return  threshBottlePresent
     return m
 
 # Save and loading of the presets and user adjustments
@@ -182,7 +191,7 @@ def hcsr04Max():
 def savePrograms():
     print "Saving program settings to bottle.settings."
     f = open( "bottle.settings","w" )
-    for p in range(0,6):
+    for p in range(0,10):
         f.write("%d " % ( fillPrograms[p] ))
     f.close()
 
@@ -193,7 +202,7 @@ def loadPrograms():
         p = f.read()
         fill = p.split(" ")
         f.close()
-        for p in range(0,6):
+        for p in range(0, 10):
             fillPrograms[p]=int(fill[p])
     except:
         print "No bottle.settings file found. Using code defaults and saving them."
@@ -292,38 +301,32 @@ while not stopBottle:
     senseBottleMark = not pz.readInput( pinBottleMark)
     senseButAdjustPreset = not pz.readInput( pinButAdjustPreset)
 
-    if currentStage == stage.Selection or currentStage == stage.BottlePresentScan :
-        # Due to the time it takes to collect the samples
-        # Only do this when nothing is moving
-        senseBottlePresent = hcsr04Max()
-    else:
-        senseBottlePresent = 100
+    senseBottlePresent = int( hcsr04.getDistance() )
 
 #    print(" select %d" % ( senseButSelection ))
 #return 
 #        print( ": sel %d selbut %d ex %d start %d sel %d stage %d pres %d mrk %d in/out %d "        % ( fillSelection, senseButSelection, senseButAdjustPreset,  senseButStartStop,  pressedSelection,  currentStage,        senseBottlePresent, senseBottleMark, senseCaddyIn +  senseCaddyOut) )
 
-    if senseButSelection :
-        print "DIAG: Selection button pressed"
+#    if senseButSelection :
+#        print "DIAG: Selection button pressed"
 
-    if senseButStartStop :
-        print "DIAG: Start/Stop button pressed"
+#    if senseButStartStop :
+#        print "DIAG: Start/Stop button pressed"
 
     #if senseCaddyIn or senseCaddyOut :
     #    print "DIAG: Caddy in/out tripped"
 
-    if senseBottleMark :
-        print "DIAG: Bottle mark tripped"
+#    if senseBottleMark :
+#        print "DIAG: Bottle mark tripped"
 
-    if senseButAdjustPreset :
-        print "DIAG: Adjust preset button pressed"
+#    if senseButAdjustPreset :
+#        print "DIAG: Adjust preset button pressed"
 
 
-    if senseBottlePresent :
-        print( "DIAG: Bottle present sensor %d" % senseBottlePresent)
-
-        if senseBottlePresent < threshBottlePresent :
-            print( "DIAG: Bottle present sensor tripped %d" % senseBottlePresent)
+#    if senseBottlePresent :
+#        print( "DIAG: Bottle present sensor %d" % senseBottlePresent)
+#        if senseBottlePresent < threshBottlePresent :
+#            print( "DIAG: Bottle present sensor tripped %d" % senseBottlePresent)
 
 
     if currentStage != stage.Selection and currentStage != stage.Learn:
@@ -565,20 +568,23 @@ while not stopBottle:
                 cycleLEDS()
         setLED()
     elif currentStage == stage.BottlePresentScan:
-        dispLED4 = True
-        dispLED5 = False
-        setLED()
-        # TODO sensor debounce
-        print( "Bottle present at this slot?" )
-        time.sleep(2)
-        if senseBottlePresent < threshBottlePresent :
-            # Bottle is present so fill it
-            currentStage = stage.FillInsert
-            print( "Yes" )
+        if stageSetup:
+            dispLED4 = True
+            dispLED5 = False
+            setLED()
+            # TODO sensor debounce
+            print( "Bottle present at this slot?" )
+            time.sleep(2)
         else:
-            # No bottle is present so find the next one
-            currentStage = stage.FindingBottleMark
-            print( "No" )
+            senseBottlePresent = hcsr04Max()
+            if senseBottlePresent <= threshBottlePresent :
+                # Bottle is present so fill it
+                currentStage = stage.FillInsert
+                print( "Yes" )
+            else:
+                # No bottle is present so find the next one
+                currentStage = stage.FindingBottleMark
+                print( "No" )
     elif currentStage == stage.FillInsert:
         setLED()
         print( "Insert fill pipe" )
@@ -601,6 +607,9 @@ while not stopBottle:
                     currentStage = stage.Selection
                 else:
                     currentStage = stage.FindingBottleMark
+                    print "Pause to avoid drips after stopping pump"
+                    time.sleep(2)
+                    print "Withdraw filling pipe"
                     pz.setOutput( pinFillInsert, fillPipeOut)
                     time.sleep(0.5)
             else:
