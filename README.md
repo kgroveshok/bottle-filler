@@ -104,7 +104,7 @@ TODO youtube videos and some pictures
 
 * Control Panel Features
 
-   * Program 'Selection' button - goes through six normal programs, the flush program (8th) that
+   * Program 'Selection' button - goes through six normal programs, the flush program (7th) that
      won't move the caddy and can be used to clean the tubing, and the 8th LED which is a system 
      shutdown feature.
 
