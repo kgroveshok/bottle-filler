@@ -25,7 +25,7 @@ drop me a message (once lockdown is over will have better material selection). :
 	* 1 x Draw runner with bearings (wonderful smooth glide motion)
 	* Food grade tubing for the pump
 
-#* Wiring
+# Wiring
 
   * The pump is connected to either of the motor outputs on the Piconzero
   * HCSR04 ultrasonic connects to the supplied socket for it on the Piconzero
@@ -68,7 +68,7 @@ drop me a message (once lockdown is over will have better material selection). :
         3 - Control panel start program/emergency stop button
 
 
-#* Usage
+# Usage
 
 The idea is that the caddy platform provides for a replaceble jig which has custom bottle holes for
 the particular bottle sizes along with a marker for where the fill point for that bottle should be.
@@ -77,7 +77,7 @@ won't tip while in motion.
 
 The flexible (TODO) fill pipe too provides flexiblity to position depending on size and shape.
 
-#* Construction
+# Construction
 
 The videos/pictures should show how I threw it together from the various prototypes.
 
@@ -109,7 +109,7 @@ use anyway. :-)
 ![](media/20210217_112618.jpg)
 
 
-#* Control Panel Features
+# Control Panel Features
 
 ## Program 'Selection' button
 This goes through six normal programs, the flush program (7th) that won't move the caddy and 
