@@ -87,6 +87,21 @@ TODO youtube videos and some pictures
 [[https://youtu.be/BeN0tJPjiZY]]
 [[https://youtu.be/YHZAN4LFCxw]]
 
+![](media/20210214_165817.jpg)
+![](media/20210217_112518.jpg)  
+![](media/20210217_112634.jpg)
+![](media/20210214_165822.jpg)  
+![](media/20210217_112545.jpg)  
+![](media/20210217_112656.jpg)
+![](media/20210215_085208.jpg)  
+![](media/20210217_112554.jpg)  
+![](media/20210217_112706.jpg)
+![](media/20210217_112507.jpg) 
+![](media/20210217_112601.jpg)
+![](media/20210217_112512.jpg)  
+![](media/20210217_112618.jpg)
+
+
 * Control Panel Features
 
    * Program 'Selection' button - goes through six normal programs, the flush program (7th) that
