@@ -84,8 +84,11 @@ The flexible (TODO) fill pipe too provides flexiblity to position depending on s
 * Videos and Photos
 
 Here are some early prototype videos: 
+
 [![Video 1](https://img.youtube.com/vi/vrkxeWaGT0Y/0.jpg)](https://www.youtube.com/watch?v=vrkxeWaGT0Y)
+
 [![Video 2](https://img.youtube.com/vi/BeN0tJPjiZY/0.jpg)](https://www.youtube.com/watch?v=BeN0tJPjiZY)
+
 [![Video 3](https://img.youtube.com/vi/YHZAN4LFCxw/0.jpg)](https://www.youtube.com/watch?v=YHZAN4LFCxw)
 
 
