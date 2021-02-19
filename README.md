@@ -83,11 +83,7 @@ The flexible (TODO) fill pipe too provides flexiblity to position depending on s
 
 * Videos and Photos
 
-Here are some early prototype videos
-
-![](https://youtu.be/vrkxeWaGT0Y)
-![](https://youtu.be/BeN0tJPjiZY)
-![](https://youtu.be/YHZAN4LFCxw)
+Here are some early prototype videos: [![Video 1](https://youtu.be/vrkxeWaGT0Y)] [![Video 2](https://youtu.be/BeN0tJPjiZY)] [![Video 3](https://youtu.be/YHZAN4LFCxw)]
 
 Now some final build photos. OK, the wood quality wasn't great, due to COVID lock down I could only use materials I had at hand which was some off cut worktop and some rough ply. Annoyingly I couldn't find my decent white primer so had to use art white acryilic which didn't work so well. Oh well. Its for my 
 use anyway. :-)
