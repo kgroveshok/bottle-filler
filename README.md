@@ -9,21 +9,21 @@ drop me a message (once lockdown is over will have better material selection). :
 
 # Parts Needed
 
-	* Any Raspberry Pi, I'm using a Zero. At some point might convert to ESP.
-	* Piconzero control board (just so its all compact). https://4tronix.co.uk/blog/?p=1224
- 	* HCSR04 ultasonic detector (for bottle presence detection) 
-	* 3 x Microswitches (Caddy ends and bottle marker)
-	* 1 x Continuous rotation servo to drive the caddy
-	* 1 x Micro 180 servo to control filling pipe insertion 
-	* 1 x Micro pump of choice. Using a 12v but works well under 5v it's a chemical grade 
-          so I can use with alcohol based perfumes
-	* 1 x HEF4051B octal multiplexer to drive the 8 LEDS from 3 pins
-	* 4 x Push buttons for the control panel
-	* 8 x LEDs 
-	* Any breadboard or vero to stick it all on
-	* Various bits of wood, metal, whatever to build
-	* 1 x Draw runner with bearings (wonderful smooth glide motion)
-	* Food grade tubing for the pump
+  * Any Raspberry Pi, I'm using a Zero. At some point might convert to ESP.
+  * Piconzero control board (just so its all compact). https://4tronix.co.uk/blog/?p=1224
+  * HCSR04 ultasonic detector (for bottle presence detection) 
+  * 3 x Microswitches (Caddy ends and bottle marker)
+  * 1 x Continuous rotation servo to drive the caddy
+  * 1 x Micro 180 servo to control filling pipe insertion 
+  * 1 x Micro pump of choice. Using a 12v but works well under 5v it's a chemical grade 
+    so I can use with alcohol based perfumes
+  * 1 x HEF4051B octal multiplexer to drive the 8 LEDS from 3 pins
+  * 4 x Push buttons for the control panel
+  * 8 x LEDs 
+  * Any breadboard or vero to stick it all on
+  * Various bits of wood, metal, whatever to build
+  * 1 x Draw runner with bearings (wonderful smooth glide motion)
+  * Food grade tubing for the pump
 
 # Wiring
 
@@ -55,12 +55,12 @@ drop me a message (once lockdown is over will have better material selection). :
         All LEDs have a common ground which is connected to the Pi ground.
         5v is supplied from the Pi
 
-    * Piconzero output pin wiring:
+  * Piconzero output pin wiring:
 
         0 - Caddy servo
         1 - Fill pipe servo
 
-    * Piconzero input pin wiring:
+  * Piconzero input pin wiring:
 
         0 - Caddy in and Caddy out microswitches, Control panel button (unused)
         1 - Control panel button for program adjustment
@@ -117,15 +117,15 @@ can be used to clean the tubing, and the 8th LED which is a system shutdown feat
 
 ## Program Adjustment
 
-	* Select a program to change
-        * Press the 'Adjustment' button
-        * The 8th and selected program LEDs will blink alternately
-        * Pressing and releasing the program select button will fire the pump for one unit
-        * Repeat until the desired number of presses are made
-        * Pressing 'Adjustment' button will save that setting
-        * Pressing 'Start' will cancel the adjustment
-        * All settings are saved to 'bottle.settings' file. You can either edit it later, or 
-          deletion will revert to the predefined settings in the code.
+   * Select a program to change
+   * Press the 'Adjustment' button
+   * The 8th and selected program LEDs will blink alternately
+   * Pressing and releasing the program select button will fire the pump for one unit
+   * Repeat until the desired number of presses are made
+   * Pressing 'Adjustment' button will save that setting
+   * Pressing 'Start' will cancel the adjustment
+   * All settings are saved to 'bottle.settings' file. You can either edit it later, or 
+     deletion will revert to the predefined settings in the code.
 
 
 ## 'Start' and emergency stop button
@@ -134,8 +134,8 @@ Starts the fill process. If at any time you need to stop before the end of progr
 ## Prime Pump
 If the tube is empty you need to fill the tubing with liquid so that you don't get empty bottles on the fill process. 
 
-        * Hold down the program 'Selection' button
-        * Press and hold the 'Start' button and the pump will run until you release both
+   * Hold down the program 'Selection' button
+   * Press and hold the 'Start' button and the pump will run until you release both
 
 ## Calibrate Pipe Insert
 To make sure the pipe inserts into the bottle at the right point, you can hold down the 'Selection' 
