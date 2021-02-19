@@ -81,11 +81,16 @@ won't tip while in motion.
 
 The flexible (TODO) fill pipe too provides flexiblity to position depending on size and shape.
 
-TODO youtube videos and some pictures
+* Videos and Photos
 
-[[https://youtu.be/vrkxeWaGT0Y]]
-[[https://youtu.be/BeN0tJPjiZY]]
-[[https://youtu.be/YHZAN4LFCxw]]
+Here are some early prototype videos
+
+![](https://youtu.be/vrkxeWaGT0Y)
+![](https://youtu.be/BeN0tJPjiZY)
+![](https://youtu.be/YHZAN4LFCxw)
+
+Now some final build photos. OK, the wood quality wasn't great, due to COVID lock down I could only use materials I had at hand which was some off cut worktop and some rough ply. Annoyingly I couldn't find my decent white primer so had to use art white acryilic which didn't work so well. Oh well. Its for my 
+use anyway. :-)
 
 ![](media/20210214_165817.jpg)
 ![](media/20210217_112518.jpg)  
