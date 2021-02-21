@@ -7,7 +7,12 @@ my sanity during COVID lock down I thought this little project will help both.
 Feel free to reuse but please do credit, hey, and if you want me to build you one
 drop me a message (once lockdown is over will have better material selection). :-)
 
-# Parts Needed
+[![Introduction](https://img.youtube.com/vi/9glj0tt7VoQ/0.jpg)](https://www.youtube.com/watch?v=9glj0tt7VoQ)
+
+
+# Construction
+
+## Parts Needed
 
 * Any Raspberry Pi, I'm using a Zero. At some point might convert to ESP.
 * Piconzero control board (just so its all compact). https://4tronix.co.uk/blog/?p=1224
@@ -25,7 +30,7 @@ so I can use with alcohol based perfumes
 * 1 x Draw runner with bearings (wonderful smooth glide motion)
 * Food grade tubing for the pump
 
-# Wiring
+## Wiring
 
 * The pump is connected to either of the motor outputs on the Piconzero
 * HCSR04 ultrasonic connects to the supplied socket for it on the Piconzero
@@ -68,16 +73,7 @@ All LEDs have a common ground which is connected to the Pi ground.
         3 - Control panel start program/emergency stop button
 
 
-# Usage
-
-The idea is that the caddy platform provides for a replaceble jig which has custom bottle holes for
-the particular bottle sizes along with a marker for where the fill point for that bottle should be.
-This means that various bottle shapes and sizes can be accomodated and that they are held safely and
-won't tip while in motion.
-
-The flexible (TODO) fill pipe too provides flexiblity to position depending on size and shape.
-
-# Construction
+## Building
 
 The videos/pictures should show how I threw it together from the various prototypes.
 
@@ -93,6 +89,27 @@ Here are some early prototype videos and pictures:
 ![](media/20210214_165817.jpg)
 ![](media/20210214_165822.jpg)  
 ![](media/20210215_085208.jpg)  
+
+
+
+
+# Usage
+
+The idea is that the caddy platform provides for a replaceble jig which has custom bottle holes for
+the particular bottle sizes along with a marker for where the fill point for that bottle should be.
+This means that various bottle shapes and sizes can be accomodated and that they are held safely and
+won't tip while in motion.
+
+The flexible fill pipe too provides flexiblity to position depending on size and shape.
+
+
+[![Feature Overview](https://img.youtube.com/vi/HLgK549O6gQ/0.jpg)](https://www.youtube.com/watch?v=HLgK549O6gQ)
+
+[![Dry Run 1](https://img.youtube.com/vi/8gWB_FIZPl4/0.jpg)](https://www.youtube.com/watch?v=8gWB_FIZPl4)
+
+[![Dry Run 2](https://img.youtube.com/vi/HOjA3XgUOuc/0.jpg)](https://www.youtube.com/watch?v=HOjA3XgUOuc)
+
+[![Live Run](https://img.youtube.com/vi/7t0mo8SHLEQ/0.jpg)](https://www.youtube.com/watch?v=7t0mo8SHLEQ)
 
 Now some final build photos. OK, the wood quality wasn't great, due to COVID lock down I could only use materials I had at hand which was some off cut worktop and some rough ply. Annoyingly I couldn't find my decent white primer so had to use art white acryilic which didn't work so well. Oh well. Its for my 
 use anyway. :-)
@@ -131,6 +148,19 @@ deletion will revert to the predefined settings in the code.
 ## 'Start' and emergency stop button
 Starts the fill process. If at any time you need to stop before the end of program hold this button down.
 
+* Press 'Selection' button until the desired program is found
+* Press 'Start' button
+* LEDs cycle
+* Caddy will eject all the bottles until the microswitch is tripped.
+* Caddy will reverse and begin to search for a bottle marker being tripped by a micro switch
+* Caddy drive servo will stop
+* Ultrasonic dector will make sure there is a bottle actually at that bottle marker
+* If a bottle is sensed then the pipe fill servo will insert the fill tube
+* Pump will start up for the required number of units
+* Pipe fill servo will remove tube
+* Caddy will then continue to look for another bottle marker unless the end caddy micro switch is
+tripped.
+
 ## Prime Pump
 If the tube is empty you need to fill the tubing with liquid so that you don't get empty bottles on the fill process. 
 
@@ -145,18 +175,7 @@ button and tap the 'Adjustment' button to toggle the position of the filling ser
 Starting the 7th program will run the pump in whatever position it is in for a long (can be adjusted) 
 cycle and this can be used to flush through any water and/or cleaning fluid.
 
-# Fill Process
 
-* Press 'Selection' button until the desired program is found
-* Press 'Start' button
-* LEDs cycle
-* Caddy will eject all the bottles until the microswitch is tripped.
-* Caddy will reverse and begin to search for a bottle marker being tripped by a micro switch
-* Caddy drive servo will stop
-* Ultrasonic dector will make sure there is a bottle actually at that bottle marker
-* If a bottle is sensed then the pipe fill servo will insert the fill tube
-* Pump will start up for the required number of units
-* Pipe fill servo will remove tube
-* Caddy will then continue to look for another bottle marker unless the end caddy micro switch is
-tripped.
+
+
 
