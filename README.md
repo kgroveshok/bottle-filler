@@ -7,6 +7,8 @@ my sanity during COVID lock down I thought this little project will help both.
 Feel free to reuse but please do credit, hey, and if you want me to build you one
 drop me a message (once lockdown is over will have better material selection). :-)
 
+[![Now on Hackaday](https://hackaday.io/project/179928-raspberry-pi-zero-bottle-filler)](https://hackaday.io/project/179928-raspberry-pi-zero-bottle-filler)
+
 # Introduction Video
 
 [![Introduction](https://img.youtube.com/vi/9glj0tt7VoQ/0.jpg)](https://www.youtube.com/watch?v=9glj0tt7VoQ)
