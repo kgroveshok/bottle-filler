@@ -154,6 +154,7 @@ fillPipeOut=150
 # Piconzero pump motor speed and direction 
 # * CHANGE HERE *
 fillSpeed = -100
+fillReverse = 100
 
 # Piconzero pump duration (s) for a single unit 
 # * CHANGE HERE *
@@ -645,7 +646,10 @@ while not stopBottle:
                     currentStage = stage.Selection
                 else:
                     currentStage = stage.FindingBottleMark
-                    print "Pause to avoid drips after stopping pump"
+                    print "Reverse and pause to avoid drips after stopping pump"
+                    pz.forward( fillReverse)
+                    time.sleep(2)
+                    pz.stop()
                     time.sleep(2)
                     print "Withdraw filling pipe"
                     pz.setOutput( pinFillInsert, fillPipeOut)
