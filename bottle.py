@@ -47,10 +47,11 @@ class stage:
     FindingBottleMark = 3
     BottlePresentScan =4
     FillInsert = 5
-    Filling = 6
-    Stop = 7
-    Init = 8
-    Learn = 9
+    FillPause = 6
+    Filling = 7
+    Stop = 8
+    Init = 9
+    Learn = 10
 
 
 
@@ -164,6 +165,8 @@ fillPulse = 0.05
 fillPrograms = [ 1, 5, 10, 15, 20, 40, 300, 1, 0, 0 ]
 fillStage = 0
 
+
+
 def hcsr04Max():
     # Take find the max from an avg of the samples to discount spurious readings
     # v2 Or see if the presence threshold is counted significantly
@@ -239,6 +242,9 @@ stageSetup = True
 learnBlink = 0
 caddyPos = 0
 pipeStateIn = False
+
+flashFlipFlop = 0
+flashCt = 0
 
 # handle selection and button bounce
 
@@ -592,7 +598,37 @@ while not stopBottle:
         print( "Insert fill pipe" )
         pz.setOutput( pinFillInsert, fillPipeIn)
         time.sleep(2)
-        currentStage = stage.Filling
+        currentStage = stage.FillPause
+
+    elif currentStage == stage.FillPause:
+        if stageSetup:
+            dispLED4 = True
+            dispLED5 = False
+            setLED()
+            print( "Waiting before filling..." )
+            fillStage = 50
+            flashFlipFlop = 0
+            flashCt = 10
+        else:
+            flashCt = flashCt - 1
+            if flashCt == 0 :
+                if flashFlipFlop == 0:
+                        dispLED4 = True
+                        dispLED5 = False
+                        flashCt = 10
+                        flashFlipFlop = 1
+                else:
+                        dispLED4 = False
+                        dispLED5 = True
+                        flashCt = 10
+                        flashFlipFlop = 0
+
+            setLED()
+            if fillStage == 0 :
+                currentStage = stage.Filling
+            else:
+                time.sleep(0.5)
+                fillStage = fillStage - 1
 
 
     elif currentStage == stage.Filling:
