@@ -149,7 +149,7 @@ caddySpeedOut=50
 # Piconzero servo pipe bottle insertion angles
 # * CHANGE HERE *
 fillPipeIn=135
-fillPipeOut=180
+fillPipeOut=150
 
 # Piconzero pump motor speed and direction 
 # * CHANGE HERE *
