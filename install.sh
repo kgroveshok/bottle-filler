@@ -3,7 +3,7 @@
 # setup piconzero and all dependancies for the bottle filler
 
 
-sudo apt-get install python-smbus python3-smbus python-dev python3-dev
+sudo apt-get install python-smbus python3-smbus python-dev python3-dev python
 sudo cat >>/boot/config.txt <<EOF
 dtparam=i2c1=on
 dtparam=i2c_arm=on
