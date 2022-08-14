@@ -14,5 +14,5 @@ EOF
 wget http://4tronix.co.uk/piconz.sh -O piconz.sh
 bash piconz.sh
 
-
+pip install enum
 
