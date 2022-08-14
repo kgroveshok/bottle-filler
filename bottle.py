@@ -196,7 +196,7 @@ fillStage = 0
 # Save and loading of the presets and user adjustments
 
 def savePrograms():
-    print "Saving program settings to bottle.settings."
+    print( "Saving program settings to bottle.settings.")
     f = open( "bottle.settings","w" )
     for p in range(0,10):
         f.write("%d " % ( fillPrograms[p] ))
@@ -205,17 +205,17 @@ def savePrograms():
 def loadPrograms():
     try:
         f = open( "bottle.settings","r" )
-        print "Loading programs from bottle.settings"
+        print( "Loading programs from bottle.settings")
         p = f.read()
         fill = p.split(" ")
         f.close()
         for p in range(0, 10):
             fillPrograms[p]=int(fill[p])
     except:
-        print "No bottle.settings file found. Using code defaults and saving them."
+        print( "No bottle.settings file found. Using code defaults and saving them.")
         savePrograms()
 
-    print "Current Programs"
+    print( "Current Programs")
     for p in range(0,6):
         fillPrograms[p]=int(fillPrograms[p])
         print("Program %d = %d" % ( p, fillPrograms[p]))
@@ -380,17 +380,17 @@ while not stopBottle:
         if senseButAdjustPreset and not pressedAdjust :
             # selection button pressed
             pressedAdjust = True
-            print "Holding down adjust button in learn"
+            print( "Holding down adjust button in learn")
 
         if senseButSelection and not pressedSelection:
             # selection button pressed
             pressedSelection = True
-            print "Holding down selection button in learn"
+            print( "Holding down selection button in learn")
 
         if senseButStartStop and not pressedStartStop:
             # selection button pressed
             pressedStartStop = True
-            print "Holding down start button in learn"
+            print( "Holding down start button in learn")
 
         if not senseButStartStop and pressedStartStop :
             # cancel adjustment
