@@ -327,10 +327,10 @@ while not stopBottle:
     #    print "DIAG: Caddy in/out tripped"
 
 #    if senseBottleMark :
-#        print "DIAG: Bottle mark tripped"
+#        print( "DIAG: Bottle mark tripped")
 
 #    if senseButAdjustPreset :
-#        print "DIAG: Adjust preset button pressed"
+#        print( "DIAG: Adjust preset button pressed")
 
 
 #    if senseBottlePresent :
@@ -515,11 +515,12 @@ while not stopBottle:
                 currentStage = stage.Filling
                 senseButStartStop = False
             else:
-                print( "Start fill process")
-                currentStage = stage.Filling
+                #print( "Start fill process")
+                print( "Start fill bottle using program %d" % (fillSelection) )
+                currentStage = stage.FindingBottleMark 
 
+            time.sleep(1)
             cycleLEDS()
-            time.sleep(2)
 
             if fillSelection == 7:
                 print ("Power off")
@@ -569,17 +570,17 @@ while not stopBottle:
             if senseBottleMark:
  #               pz.setOutput( pinCaddyDrive, caddySpeedStop )
                 time.sleep(1)
-                currentStage = stage.BottlePresentScan
+                currentStage = stage.Filling
   #              pz.setOutput( pinCaddyDrive, caddySpeedStop )
 
-            if senseCaddyIn :
-                print("At end of filling. Stop")
-                currentStage = stage.Selection
+#            if senseCaddyIn :
+#                print("At end of filling. Stop")
+#                currentStage = stage.Selection
 #                pz.setOutput( pinCaddyDrive, caddySpeedStop )
-                time.sleep(1)
+ #               time.sleep(1)
  #               pz.setOutput( pinCaddyDrive, caddySpeedStop )
  #               pz.setOutput( pinFillInsert, fillPipeOut)
-                cycleLEDS()
+ #               cycleLEDS()
         setLED()
 #    elif currentStage == stage.BottlePresentScan:
 #        if stageSetup:
@@ -646,9 +647,11 @@ while not stopBottle:
         else:
             if fillStage == 0 :
                 print( "Filling completed")
+                currentStage = stage.FindingBottleMark 
                 if fillSelection == 6:
                     print( "Flush system program is over so return to selection")
                     currentStage = stage.Selection
+                    time.sleep(1)
                 else:
 #                    currentStage = stage.FindingBottleMark
 #                    print "Reverse and pause to avoid drips after stopping pump"
@@ -668,8 +671,9 @@ while not stopBottle:
 
     elif currentStage == stage.Init:
         if stageSetup:
-#                dispLED2 = True
+            #                dispLED2 = True
             pz.stop()
+            cycleLEDS()
 #            pz.setOutput( pinFillInsert, fillPipeOut)
 #            caddyPos = 0
 #            time.sleep(2)
@@ -684,11 +688,11 @@ while not stopBottle:
  #               pz.setOutput( pinCaddyDrive, caddySpeedStop )
  #               time.sleep(1)
  #               pz.setOutput( pinCaddyDrive, caddySpeedStop )
- #               currentStage = stage.Selection
+            currentStage = stage.Selection
         setLED()
         
 
 #hcsr04.cleanup()
 
 pz.cleanup()
-os.system("sudo halt -p")
+#os.system("sudo halt -p")
