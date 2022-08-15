@@ -510,14 +510,14 @@ while not stopBottle:
 #                dispLED3 = False
 #                dispLED4 = False
 #                dispLED5 = False
-            if fillSelection == 6 :
-                print("Flush system program starting")
-                currentStage = stage.Filling
-                senseButStartStop = False
-            else:
+#            if fillSelection == 6 :
+#                print("Flush system program starting")
+#                currentStage = stage.Filling
+#                senseButStartStop = False
+#            else:
                 #print( "Start fill process")
-                print( "Start fill bottle using program %d" % (fillSelection) )
-                currentStage = stage.FindingBottleMark 
+            print( "Start fill bottle using program %d" % (fillSelection) )
+            currentStage = stage.FindingBottleMark 
 
             time.sleep(1)
             cycleLEDS()
@@ -648,16 +648,16 @@ while not stopBottle:
             if fillStage == 0 :
                 print( "Filling completed")
                 currentStage = stage.FindingBottleMark 
-                if fillSelection == 6:
-                    print( "Flush system program is over so return to selection")
-                    currentStage = stage.Selection
-                    time.sleep(1)
-                else:
+#                if fillSelection == 6:
+#                    print( "Flush system program is over so return to selection")
+#                    currentStage = stage.Selection
+#                    time.sleep(1)
+#                else:
 #                    currentStage = stage.FindingBottleMark
 #                    print "Reverse and pause to avoid drips after stopping pump"
 #                    pz.forward( fillReverse)
 #                    time.sleep(2)
-                    pz.stop()
+                pz.stop()
 #                    time.sleep(2)
 #                    print "Withdraw filling pipe"
 #                    pz.setOutput( pinFillInsert, fillPipeOut)
