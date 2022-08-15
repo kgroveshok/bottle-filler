@@ -14,7 +14,7 @@
 # (c) 2021 Kevin Groves
 # Feel free to reuse but please do credit
 
-from enum import Enum
+#from enum import Enum
 import piconzero as pz, time
 #import hcsr04, time
 from gpiozero import LED
@@ -433,7 +433,7 @@ while not stopBottle:
 
     elif currentStage == stage.Selection:
         if stageSetup :
-            pz.setOutput( pinFillInsert, fillPipeOut)
+#            pz.setOutput( pinFillInsert, fillPipeOut)
             fillStage = 0
  #           pipeStateIn = False
             pressedAdjust = False
@@ -461,6 +461,8 @@ while not stopBottle:
 
         elif not senseButSelection and pressedSelection :
             # selection button has been released
+
+
 
             pressedSelection = False
             fillStage = 0
@@ -514,7 +516,7 @@ while not stopBottle:
                 senseButStartStop = False
             else:
                 print( "Start fill process")
-                currentStage = stage.LoadCaddy
+                currentStage = stage.Filling
 
             cycleLEDS()
             time.sleep(2)
@@ -604,35 +606,35 @@ while not stopBottle:
 #        time.sleep(2)
 #        currentStage = stage.FillPause
 
-    elif currentStage == stage.FillPause:
-        if stageSetup:
-            dispLED4 = True
-            dispLED5 = False
-            setLED()
-            print( "Waiting before filling..." )
-            fillStage = 50
-            flashFlipFlop = 0
-            flashCt = 10
-        else:
-            flashCt = flashCt - 1
-            if flashCt == 0 :
-                if flashFlipFlop == 0:
-                        dispLED4 = True
-                        dispLED5 = False
-                        flashCt = 10
-                        flashFlipFlop = 1
-                else:
-                        dispLED4 = False
-                        dispLED5 = True
-                        flashCt = 10
-                        flashFlipFlop = 0
-
-            setLED()
-            if fillStage == 0 :
-                currentStage = stage.Filling
-            else:
-                time.sleep(0.5)
-                fillStage = fillStage - 1
+#    elif currentStage == stage.FillPause:
+#        if stageSetup:
+#            dispLED4 = True
+#            dispLED5 = False
+#            setLED()
+#            print( "Waiting before filling..." )
+#            fillStage = 50
+#            flashFlipFlop = 0
+#            flashCt = 10
+#        else:
+#            flashCt = flashCt - 1
+#            if flashCt == 0 :
+#                if flashFlipFlop == 0:
+#                        dispLED4 = True
+#                        dispLED5 = False
+#                        flashCt = 10
+#                        flashFlipFlop = 1
+#                else:
+#                        dispLED4 = False
+#                        dispLED5 = True
+#                        flashCt = 10
+#                        flashFlipFlop = 0
+#
+#            setLED()
+#            if fillStage == 0 :
+#                currentStage = stage.Filling
+#            else:
+#                time.sleep(0.5)
+#                fillStage = fillStage - 1
 
 
     elif currentStage == stage.Filling:

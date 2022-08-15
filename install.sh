@@ -11,8 +11,11 @@ EOF
 
 # i2cdetect -y 1
 
-wget http://4tronix.co.uk/piconz.sh -O piconz.sh
-bash piconz.sh
+#wget http://4tronix.co.uk/piconz.sh -O piconz.sh
+#bash piconz.sh
+
+git clone https://github.com/4tronix/PiconZero.git
 
 pip install enum
+pip install smbus
 
