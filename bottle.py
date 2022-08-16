@@ -76,6 +76,10 @@ pinButAdjustPreset = 2
 
 #pinCaddyDrive = 0
 
+#pinLED1 = 17
+#pinLED2 = 18
+#pinLED3 = 27
+
 pinLED1 = 3
 pinLED2 = 4
 pinLED3 = 5
@@ -126,7 +130,7 @@ def setLED():
 
     for p in range(0,8):
         if displayLED[p][0]:
-            #print( "LED %d on" % (p))
+            #            print( "LED %d on" % (p))
             if displayLED[p][3]:
                 pin1.on()
             else:
@@ -281,6 +285,8 @@ pz.setOutputConfig( pinLED3, 0 )
 
 # main loop
 
+cycleLEDS()
+cycleLEDS()
 cycleLEDS()
 
 # load presaved programs if present
@@ -695,4 +701,4 @@ while not stopBottle:
 #hcsr04.cleanup()
 
 pz.cleanup()
-#os.system("sudo halt -p")
+os.system("sudo halt -p")
