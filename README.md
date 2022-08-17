@@ -14,7 +14,7 @@ drop me a message (once lockdown is over will have better material selection). :
 [![Introduction](https://img.youtube.com/vi/9glj0tt7VoQ/0.jpg)](https://www.youtube.com/watch?v=9glj0tt7VoQ)
 
 
-# Construction
+# Construction Version 1
 
 ## Parts Needed
 
@@ -188,6 +188,39 @@ button and tap the 'Adjustment' button to toggle the position of the filling ser
 Starting the 7th program will run the pump in whatever position it is in for a long (can be adjusted) 
 cycle and this can be used to flush through any water and/or cleaning fluid.
 
+
+
+
+
+# Construction Version 2 - Aug 2022
+
+The previous version was just a little too complex (yeah, it filled in the time tbh), and counldn't 
+handle the larger and heavier perfume bottles I eventually went with. Now I'm revisiting the
+design to speed things up. A major concern was the pump too, each perfume change would require
+the pipes to be fully flushed to prevent cross contamination. Theere would be material losses
+which wouldn't be ideal. I really needed a better pump solution.
+
+Then I found a peristaltic dosing pump. This type of pump that has no physical contact with the
+pipe contents is ideal. All I would need to do to change perume would be to change the pipe. 
+No flushing required (except at the end for any left overs).
+
+I chose to also simply filling with removal of all moving parts excepting the pump. Removed most of
+the sensors except one which helps with bottle fill trigger.
+
+Much easier now.
+
+
+
+## Building
+
+* Stripped down the original device.
+* Removed moveable platform
+* Remove platform end sensors
+* Remove filling tube arm
+* Removed platform servo
+* Kept the bottle mark sensor for reuse as a switch to trigger filling of the bottle
+* Kept the control panel
+* Replaced the pump with a peristaltic pump and provided means for the pipe to be focused
 
 
 
