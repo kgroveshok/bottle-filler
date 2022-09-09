@@ -201,8 +201,8 @@ the pipes to be fully flushed to prevent cross contamination. Theere would be ma
 which wouldn't be ideal. I really needed a better pump solution.
 
 Then I found a peristaltic dosing pump. This type of pump that has no physical contact with the
-pipe contents is ideal. All I would need to do to change perume would be to change the pipe. 
-No flushing required (except at the end for any left overs).
+pipe contents and it's ideal. All I would need to do to change perfume would be to change the pipe. 
+No large amounts of flushing required (except at the end for any left overs).
 
 I chose to also simply filling with removal of all moving parts excepting the pump. Removed most of
 the sensors except one which helps with bottle fill trigger.
@@ -221,6 +221,23 @@ Much easier now.
 * Kept the bottle mark sensor for reuse as a switch to trigger filling of the bottle
 * Kept the control panel
 * Replaced the pump with a peristaltic pump and provided means for the pipe to be focused
+
+
+## Trial Run
+
+And yes, obivously recording the trial run was a bad move as things didn't quite work right,
+nothing serious, just over flowing bottle.
+
+[![V2 Live Run](https://img.youtube.com/vi/VE5aFr9dA/0.jpg)](https://www.youtube.com/watch?v=VE5aFr9dA)
+
+
+I've since corrected the filling settings and have ordered a Raspberry Pico. Once I've met the filling
+demands for this current perfume batch I will be rebuilding for that platform along a redesigned 
+control panel and a smaller box. Perhaps making it a box I can clamp to a lab retort or put on the wall.
+
+
+
+
 
 
 
