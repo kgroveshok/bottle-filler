@@ -80,7 +80,7 @@ def setLED():
    # set led states
 
    # display current state
-   buttonContext = [ ]
+   buttonContext = [ "", "", ""]
 
    oled.fill(0)
 
