@@ -241,4 +241,16 @@ control panel and a smaller box. Perhaps making it a box I can clamp to a lab re
 
 
 
+# Construction Version 3 - Sep/Oct 2022
+
+
+New code for a Pico version using OLED 1.3 panel and three buttons.
+
+Have added L298N motor/stepper board to provide scope for using the 
+existing pump as well as replacing at some point with a much more 
+precise (and expensive) stepper motor.
+
+
+Photos to follow...
+
 
