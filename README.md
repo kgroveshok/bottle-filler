@@ -258,6 +258,6 @@ Photos to follow...
 ![(Drawing)](pico/Schematic_Bottle_Filler_v3_2022-10-01.pdf)
 
 ![](pico/20221001_164701.jpg)
-1[](pico/20221001_165718.jpg)
+![](pico/20221001_165718.jpg)
 
 
