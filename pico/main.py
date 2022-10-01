@@ -23,6 +23,7 @@ from ssd1306 import SSD1306_I2C
 from time import sleep
 import framebuf,sys
 import os
+import json
 
 pix_res_x  = 128 # SSD1306 horizontal resolution
 pix_res_y = 64   # SSD1306 vertical resolution
@@ -127,6 +128,12 @@ def setLED():
         # adjust auto switch off
         # battery monitor???
         # stepper or motor
+   elif currentStage ==  stage.FindingBottleMark:
+        #print( "Program running" )
+        oled.text( "Waiting to fill...", 0, 12 )
+        
+        buttonContext = [ "Stop", "Fill", "" ]
+       
    elif currentStage == stage.Filling:
         #print( "Display Filling pulse %d of %d" % ( fillStage, fillPrograms[fillSelection] ))
         oled.text( "Filling", 25, 12 )
@@ -188,7 +195,7 @@ fillReverse = 100
 
 # Piconzero pump duration (s) for a single unit 
 # * CHANGE HERE *
-fillPulse = 0.05
+fillPulse = 0.5
 contrast = 10
 useJack = 0
 pumpType = 0
@@ -210,42 +217,95 @@ labelChar = 0
 
 def savePrograms():
     print( "Saving program settings to bottle.settings.")
-    f = open( "bottle.settings","w" )
-    for p in range(len(settings)):
-        f.write("%d " % ( settings[p] ))
-    for p in range(0,maxProgram):
-        f.write("%d " % ( fillPrograms[p] ))
-    for p in range(0,maxProgram):
-        f.write("%d " % ( directionPrograms[p] ))
-    for p in range(0,maxProgram):
-        f.write("%s~" % ( labelPrograms[p] ))
-    f.close()
+    
+    #f = open( "/bottle.json","w" )
+    config= [ settings, fillPrograms, directionPrograms, labelPrograms ]
+    
+    with open('/bottle.json', "w") as file_write:
+        json.dump(config, file_write)
+    #json.dumps( config, f)
+    
+#    for p in range(len(settings)):
+#        f.write("%d " % ( settings[p] ))
+#    f.write("\n")
+#    for p in range(0,maxProgram):
+#        f.write("%d " % ( fillPrograms[p] ))
+#    f.write("\n")
+#    for p in range(0,maxProgram):
+#        f.write("%d " % ( directionPrograms[p] ))
+#    f.write("\n")
+#    for p in range(0,maxProgram):
+#        f.write("%s~" % ( labelPrograms[p] ))
+    file_write.close()
 
 def loadPrograms():
+       
+    
+    #oled.text(os.getcwd(),  25, 12 )
+    #oled.show()
+    #sleep(10)
+        
+        #savePrograms()
+        
     try:
-        f = open( "bottle.settings","r" )
+        
+        global settings
+        global fillPrograms
+        global directionPrograms
+        global labelPrograms
+        global fillPulse 
+        global contrast 
+        global useJack 
+        global maxProgram 
+        global pumpType 
+
+        
+        f = open( "/bottle.json","r" )
         print( "Loading programs from bottle.settings")
         p = f.read()
-        settings = p.split(" ")
+        config=json.loads(p)
+        print(config)
+        #settings = p.split(" ")
         # TODO first value is settings version number
-        fillPulse = settings[1]
-        contrast = settings[2]
-        useJack = settings[3]
-        maxProgram = settings[4]
-        pumpType = settings[5]
+        settings=config[0]
+        fillPulse = float(settings[1])
+        contrast = int(settings[2])
+        useJack = int(settings[3])
+        maxProgram = int(settings[4])
+        pumpType = int(settings[5])
 
-        p = f.read()
-        fill = p.split(" ")
-        for p in range(0,maxProgram):
-            fillPrograms[p]=int(fill[p])
-        p = f.read()
-        fill = p.split(" ")
-        for p in range(0,maxProgram):
-            directionPrograms[p]=int(fill[p])
-        p = f.read()
-        fill = p.split("~")
-        for p in range(0,maxProgram):
-            labelPrograms[p]=fill[p]
+        fillPrograms=config[1]
+        directionPrograms=config[2]
+        labelPrograms=config[3]
+        
+        print("Loaded")
+        print(fillPrograms)
+        print(config[1])
+        print(labelPrograms)
+        print(config[3])
+        
+        
+        print("settings")
+        print(fillPulse)
+        print(contrast)
+        print(useJack)
+        print(maxProgram)
+        print(pumpType)
+
+        
+        #p = f.read()
+        #fill = p.split(" ")
+       # 
+        #for p in range(0,maxProgram-1):
+        #      fillPrograms[p]=int(fill[p])
+        #p = f.read()
+        #fill = p.split(" ")
+        #for p in range(0,maxProgram-1):
+        #    directionPrograms[p]=int(fill[p])
+        #p = f.read()
+        #fill = p.split("~")
+        #for p in range(0,maxProgram-1):
+        #    labelPrograms[p]=fill[p]
         f.close()
     except:
         print( "No bottle.settings file found. Using code defaults and saving them.")
@@ -336,6 +396,12 @@ pumpActive = Pin(4, Pin.OUT)
 
 # load presaved programs if present
 loadPrograms()
+
+print("Loaded2")
+print(fillPrograms)
+print(labelPrograms)
+
+
 
 while True:
     if currentStage != prevStage :
