@@ -251,7 +251,7 @@ existing pump as well as replacing at some point with a much more
 precise (and expensive) stepper motor.
 
 
-Photos to follow...
+## Photos and drawings
 
 
 ![](pico/Schematic_Bottle_Filler_v3_2022-10-01.png)
@@ -259,5 +259,21 @@ Photos to follow...
 
 ![](pico/20221001_164701.jpg)
 ![](pico/20221001_165718.jpg)
+
+## Extra Features
+
+The replacement of the LEDs with an OLED panel, a better UI can be presented.
+At this stage I have the ability of make adjustments to the programs with
+selection of the pump direction, increment and decrement of the pulse count
+and then the ability to change the label on the program display.
+
+## Todo
+
+* Add a settings screan where I can adjust the pump pulse timing and select
+either the motor or more accurate stepper motor.
+* Provide a 6mm jack socket so I can use my drum machine pedal to trigger the 
+fill process hands free!
+* Reformat the OLED display so it looks neater and perhaps include images/animations. Slick.
+
 
 
