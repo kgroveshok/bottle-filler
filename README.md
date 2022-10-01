@@ -267,6 +267,9 @@ At this stage I have the ability of make adjustments to the programs with
 selection of the pump direction, increment and decrement of the pulse count
 and then the ability to change the label on the program display.
 
+The OLED also provides context button labels on the bottom row of the display 
+which is helpful.
+
 ## Todo
 
 * Add a settings screan where I can adjust the pump pulse timing and select
