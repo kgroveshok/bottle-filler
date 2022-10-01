@@ -255,4 +255,4 @@ Photos to follow...
 
 
 ![](pico/Schematic_Bottle_Filler_v3_2022-10-01.png)
-![](pico/Schematic_Bottle_Filler_v3_2022-10-01.pdf)
+![(Drawing)](pico/Schematic_Bottle_Filler_v3_2022-10-01.pdf)
